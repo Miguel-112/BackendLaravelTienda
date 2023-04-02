@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
 
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ProviderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,25 +26,26 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 
-Route::post('register',[AuthController::class, 'register']);
+Route::post('register', [AuthController::class, 'register']);
 
-Route::post('login',[AuthController::class, 'login']);
-
-
+Route::post('login', [AuthController::class, 'login']);
 
 
 
-Route::middleware('auth:sanctum')->group(function() {
+
+
+Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('logout', [AuthController::class, 'logout']);
     Route::get('products', [ProductController::class, 'index']);
-    Route::get('/categories', [CategoriesController::class, 'index']);
-    Route::post('/categories', [CategoriesController::class, 'store']);
-    Route::get('/categories/{category}', [CategoriesController::class, 'show']);
-    Route::put('/categories/{category}', [CategoriesController::class, 'update']);
-    Route::delete('/categories/{id}', [CategoriesController::class, 'destroy']);
 
+
+    Route::resource('categories', CategoriesController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
+    Route::resource('provider', ProviderController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
+    
 });
 
-     
-     
+
+
+
+
