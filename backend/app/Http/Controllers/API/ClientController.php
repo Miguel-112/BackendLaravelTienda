@@ -1,20 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Client;
 
-use App\Models\Provider;
-use Illuminate\Validation\Rule;
-
-class ProviderController extends Controller
+class ClientController extends Controller
 {
-    
     public function index()
     {
 
-         $provider = Provider::all();
-        return response()->json(['provider' => $provider]); 
+         $client = Client::all();
+        return response()->json(['client' => $client]); 
     
         
     }
@@ -23,20 +21,20 @@ class ProviderController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required|email|unique:providers|max:100',
+            'email' => 'required|email|max:100',
             'tel' => 'required|max:10',
             'address' => 'required|max:200',
         ]);
     
-        $provider = Provider::create($validatedData);
+        $client= Client::create($validatedData);
     
         return response()->json([
             'message' => 'Proveedor creado correctamente',
-            'data' => $provider
+            'data' => $client
         ], 201);
     }
 
-    public function update(Request $request, Provider $provider)
+    public function update(Request $request, Client $client)
     {
         try {
             $validatedData = $request->validate([
@@ -46,9 +44,9 @@ class ProviderController extends Controller
                 'address' => 'required|max:200',
             ]);
     
-            $provider->update($validatedData);
+            $client->update($validatedData);
     
-            return response()->json(['provider' => $provider], 200);
+            return response()->json(['client' => $client], 200);
     
         } catch (\Illuminate\Validation\ValidationException $e) {
             return response()->json(['errors' => $e->errors()], 422);
@@ -62,17 +60,8 @@ class ProviderController extends Controller
     
     public function destroy($id)
     {
-        $provider = Provider::findOrFail($id);
-        $provider->delete();
-        return response()->json(['provider'], 204);
+        $client = Client::findOrFail($id);
+        $client->delete();
+        return response()->json(['client'], 204);
     }
-
-
-
-   
-
-
-    
-   
-   
 }
