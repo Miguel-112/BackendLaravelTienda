@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
 
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\ProviderController;
 
 /*
@@ -42,11 +43,17 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     Route::resource('categories', CategoriesController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
-    Route::resource('provider', ProviderController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
+    Route::resource('provider', ProviderController::class)->only(['index', 'store', 'show', 'update', 'destroy']); 
+    Route::resource('client', ClientController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
+
     
-   Route::resource('client', ClientController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
     
 });
+
+
+Route::resource('marca', MarcaController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
+
+
 
 
 
