@@ -7,6 +7,8 @@ namespace Database\Seeders;
 use App\Models\Client;
 use Illuminate\Database\Seeder;
 
+use App\Models\MotorcyclePart;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -27,6 +29,7 @@ class DatabaseSeeder extends Seeder
             ProviderSeeder::class,
             ClientSeeder::class,
             MarcaSeeder::class,
+           MotorcyclePart::class,
         ]);
         
     }

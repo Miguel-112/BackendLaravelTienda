@@ -9,6 +9,7 @@ use App\Http\Controllers\AuthController;
 
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\MarcaController;
+use App\Http\Controllers\MotorcyclePartController;
 use App\Http\Controllers\ProviderController;
 
 /*
@@ -56,6 +57,11 @@ Route::resource('marca', MarcaController::class)->only(['index', 'store', 'show'
 
 
 
+
+Route::get('motorcyclepart', [MotorcyclePartController::class, 'index']);
+
+
+Route::post('motorcyclepart', [MotorcyclePartController::class, 'store']);
 
 
 

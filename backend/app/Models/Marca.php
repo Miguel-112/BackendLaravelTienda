@@ -14,8 +14,10 @@ class Marca extends Model
         'description'
     ];
 
-    public function products()
-{
-    return $this->belongsToMany(Product::class);
-}
+    public function motorcycleParts()
+    {
+        return $this->hasMany(MotorcyclePart::class);
+    }
+
+
 }

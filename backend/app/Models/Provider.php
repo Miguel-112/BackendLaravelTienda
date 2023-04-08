@@ -15,8 +15,8 @@ class Provider extends Model
         'address',
     ];
 
-    public function products()
+    public function motorcycleParts()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(MotorcyclePart::class);
     }
 }
