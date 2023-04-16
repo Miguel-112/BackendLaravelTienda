@@ -11,6 +11,9 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\MotorcyclePartController;
 use App\Http\Controllers\ProviderController;
+use App\Models\MotorcyclePart;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -46,22 +49,31 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('categories', CategoriesController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
     Route::resource('provider', ProviderController::class)->only(['index', 'store', 'show', 'update', 'destroy']); 
     Route::resource('client', ClientController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
+    Route::resource('marca', MarcaController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
 
     
     
 });
 
 
-Route::resource('marca', MarcaController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
+Route::resource('motorcyclepart', MotorcyclePartController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
+
+
+/* Route::put('motorcyclepart/{motorcyclepart}', [MotorcyclePartController::class, 'update']);
 
 
 
+ Route::get('motorcyclepart', [MotorcyclePartController::class, 'index']);
 
 
-Route::get('motorcyclepart', [MotorcyclePartController::class, 'index']);
+Route::post('motorcyclepart', [MotorcyclePartController::class, 'store']);  */
 
 
-Route::post('motorcyclepart', [MotorcyclePartController::class, 'store']);
+
+//  Route::put('/categories/{category}', [CategoriesController::class, 'update']);
+
+
+
 
 
 

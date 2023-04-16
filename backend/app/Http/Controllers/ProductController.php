@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\MotorcyclePart;
 
 class ProductController extends Controller
 {
@@ -38,8 +39,10 @@ class ProductController extends Controller
     }
 
   
-    public function update(Request $request, Product $product)
+    public function update(Request $request)
     {
+
+        return var_dump($request->all());
         
     }
 
