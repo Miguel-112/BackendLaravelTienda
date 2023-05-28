@@ -12,6 +12,8 @@ use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\MotorcyclePartController;
 use App\Http\Controllers\ProviderController;
 use App\Models\MotorcyclePart;
+use App\Http\Controllers\InvoiceDetailController;
+use App\Http\Controllers\InvoiceController;
 
 
 
@@ -44,8 +46,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('logout', [AuthController::class, 'logout']);
     Route::get('products', [ProductController::class, 'index']);
-
-
     Route::resource('categories', CategoriesController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
     Route::resource('provider', ProviderController::class)->only(['index', 'store', 'show', 'update', 'destroy']); 
     Route::resource('client', ClientController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
@@ -57,6 +57,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
 Route::resource('motorcyclepart', MotorcyclePartController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
+
+Route::resource('invoices', InvoiceController::class);
+Route::resource('invoices.invoiceDetails', InvoiceDetailController::class)->shallow();
 
 
 /* Route::put('motorcyclepart/{motorcyclepart}', [MotorcyclePartController::class, 'update']);

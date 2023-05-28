@@ -36,7 +36,7 @@ class MotorcyclePartController extends Controller
             $perPage = $request->query('perPage', 5);
             $searchTerm = $request->query('searchTerm');
 
-            /* if ($searchTerm != null && $category == 0 && $brand == 0) { */
+            
 
             $motorcyclepart = MotorcyclePart::when($searchTerm != null && filled($searchTerm), function ($query) use ($searchTerm) {
                 return $query->where('name', 'like', '%' . $searchTerm . '%');

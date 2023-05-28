@@ -15,5 +15,10 @@ class Client extends Model
         'tel',
         'address',
     ];
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
     
 }
