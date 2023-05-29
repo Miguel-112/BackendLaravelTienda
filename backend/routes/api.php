@@ -59,7 +59,7 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::resource('motorcyclepart', MotorcyclePartController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
 
 Route::resource('invoices', InvoiceController::class);
-Route::resource('invoices.invoiceDetails', InvoiceDetailController::class)->shallow();
+Route::resource('invoicesiDetails', InvoiceDetailController::class)->shallow();
 
 
 /* Route::put('motorcyclepart/{motorcyclepart}', [MotorcyclePartController::class, 'update']);
